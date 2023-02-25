@@ -5,7 +5,7 @@
 #ifdef _WIN32
     #include <conio.h>
     #include <windows.h>
-    #define CLEARSCREEN system("cls")
+    #define CLEARSCREEN ClearScreen()
     #define KEYPRESS _kbhit()
     #define GETCHAR _getch()
     #define SLEEP(x) Sleep(x)
@@ -25,6 +25,12 @@ int score = 0;
 struct Node {
    int x, y;
 };
+
+void ClearScreen() {	
+    COORD cursorPosition;	cursorPosition.X = 0;	cursorPosition.Y = 0;	
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
+    return;
+}
 
 enum Move {up, down, left, right, none};
 
